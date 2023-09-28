@@ -92,7 +92,8 @@ data "aws_iam_policy_document" "kms_key" {
 }
 
 module "lb" {
-  source  = "git@ssh.dev.azure.com:v3/nventive/Terraform-Modules/aws-lb?ref=v0.1.0"
+  source  = "nventive/lb/aws"
+  version = "1.0.0"
   enabled = local.alb_enabled && local.enabled
 
   subnet_ids                = var.subnet_ids
