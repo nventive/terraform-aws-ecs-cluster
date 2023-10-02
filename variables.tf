@@ -10,12 +10,6 @@ variable "ecs_cluster_container_insights_enabled" {
   description = "Whether or not Container Insights should be enabled."
 }
 
-variable "vpc_id" {
-  type        = string
-  default     = null
-  description = "ID of the VPC. Required if `alb_enabled` is `true`."
-}
-
 variable "subnet_ids" {
   type        = list(string)
   default     = []
