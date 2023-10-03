@@ -3,8 +3,9 @@ terraform {
 
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
-      version = ">= 3.0"
+      source                = "hashicorp/aws"
+      version               = ">= 3.0"
+      configuration_aliases = [aws.route53]
     }
     local = {
       source  = "hashicorp/local"
@@ -17,10 +18,6 @@ terraform {
     random = {
       source  = "hashicorp/random"
       version = ">= 3.0"
-    }
-    template = {
-      source  = "hashicorp/template"
-      version = ">= 2.0"
     }
     time = {
       source  = "hashicorp/time"

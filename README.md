@@ -70,7 +70,6 @@ module "ecs_cluster" {
 | <a name="requirement_local"></a> [local](#requirement\_local) | >= 1.3 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | >= 2.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.0 |
-| <a name="requirement_template"></a> [template](#requirement\_template) | >= 2.0 |
 | <a name="requirement_time"></a> [time](#requirement\_time) | >= 0.7.0 |
 ## Providers
 
@@ -96,6 +95,7 @@ module "ecs_cluster" {
 | [aws_kms_key.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/kms_key) | data source |
 | [aws_lb.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/lb) | data source |
 | [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
+| [aws_subnet.lb](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnet) | data source |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -131,7 +131,6 @@ module "ecs_cluster" {
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | List of subnet IDs for the Load Balancer. The Load Balancer will be created in the VPC associated with the subnet IDs. | `list(string)` | `[]` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Additional tags (e.g. `{'BusinessUnit': 'XYZ'}`).<br>Neither the tag keys nor the tag values will be modified by this module. | `map(string)` | `{}` | no |
 | <a name="input_tenant"></a> [tenant](#input\_tenant) | ID element \_(Rarely used, not included by default)\_. A customer identifier, indicating who this instance of a resource is for | `string` | `null` | no |
-| <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | ID of the VPC. Required if `alb_enabled` is `true`. | `string` | `null` | no |
 ## Outputs
 
 | Name | Description |

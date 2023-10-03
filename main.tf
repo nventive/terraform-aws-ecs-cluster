@@ -3,7 +3,7 @@ locals {
   logs_kms_key_enabled = length(var.logs_kms_key_arn) == 0
   logs_kms_key_arn     = local.logs_kms_key_enabled ? module.kms_key.key_arn : data.aws_kms_key.default.0.arn
   alb_use_existing     = length(var.alb_arn) > 0
-  alb_enabled          = !local.alb_use_existing && var.alb_enabled
+  alb_enabled          = !local.alb_use_existing && var.alb_enabled && length(var.subnet_ids) > 0
 }
 
 data "aws_caller_identity" "current" {}
@@ -91,6 +91,11 @@ data "aws_iam_policy_document" "kms_key" {
   }
 }
 
+data "aws_subnet" "lb" {
+  count = local.alb_enabled ? 1 : 0
+  id    = var.subnet_ids[0]
+}
+
 module "lb" {
   source  = "nventive/lb/aws"
   version = "1.0.0"
@@ -104,6 +109,7 @@ module "lb" {
   access_logs_enabled       = var.alb_access_logs_enabled
   access_logs_force_destroy = var.alb_access_logs_force_destroy
   access_logs_prefix        = var.alb_access_logs_prefix
+  vpc_id                    = data.aws_subnet.lb.0.vpc_id
 
   context = module.this.context
 }
