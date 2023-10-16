@@ -98,11 +98,12 @@ data "aws_subnet" "lb" {
 
 module "lb" {
   source  = "nventive/lb/aws"
-  version = "1.0.1"
+  version = "1.1.0"
   enabled = local.alb_enabled && local.enabled
 
   subnet_ids                = var.subnet_ids
   ip_address_type           = var.alb_ip_address_type
+  internal                  = var.alb_internal
   load_balancer_type        = "application"
   enable_http2              = true
   security_group_enabled    = true
