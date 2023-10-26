@@ -75,14 +75,14 @@ module "ecs_cluster" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.21.0 |
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_alb_dns_alias"></a> [alb\_dns\_alias](#module\_alb\_dns\_alias) | cloudposse/route53-alias/aws | 0.13.0 |
 | <a name="module_kms_key"></a> [kms\_key](#module\_kms\_key) | cloudposse/kms-key/aws | 0.12.1 |
-| <a name="module_lb"></a> [lb](#module\_lb) | nventive/lb/aws | 1.1.0 |
+| <a name="module_lb"></a> [lb](#module\_lb) | nventive/lb/aws | 1.2.0 |
 | <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.25.0 |
 ## Resources
 

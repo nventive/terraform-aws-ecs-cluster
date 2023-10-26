@@ -98,7 +98,7 @@ data "aws_subnet" "lb" {
 
 module "lb" {
   source  = "nventive/lb/aws"
-  version = "1.1.0"
+  version = "1.2.0"
   enabled = local.alb_enabled && local.enabled
 
   subnet_ids                = var.subnet_ids
