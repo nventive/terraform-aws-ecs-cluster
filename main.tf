@@ -4,6 +4,7 @@ locals {
   logs_kms_key_arn     = local.logs_kms_key_enabled ? module.kms_key.key_arn : data.aws_kms_key.default.0.arn
   alb_use_existing     = length(var.alb_arn) > 0
   alb_enabled          = !local.alb_use_existing && var.alb_enabled && length(var.subnet_ids) > 0
+  alb_alias_enabled    = length(var.alb_dns_aliases) != 0 && local.enabled
 }
 
 data "aws_caller_identity" "current" {}
@@ -99,6 +100,7 @@ data "aws_subnet" "lb" {
 module "lb" {
   source  = "nventive/lb/aws"
   version = "1.2.0"
+
   enabled = local.alb_enabled && local.enabled
 
   subnet_ids                = var.subnet_ids
@@ -124,14 +126,24 @@ module "alb_dns_alias" {
   source  = "cloudposse/route53-alias/aws"
   version = "0.13.0"
 
-  enabled   = length(var.alb_dns_aliases) != 0 && local.enabled
+  enabled = local.alb_alias_enabled
+
   providers = { aws = aws.route53 }
 
   aliases          = var.alb_dns_aliases
   parent_zone_id   = var.parent_zone_id
   parent_zone_name = var.parent_zone_name
-  target_dns_name  = local.alb_use_existing ? data.aws_lb.default.0.dns_name : module.lb.dns_name
-  target_zone_id   = local.alb_use_existing ? data.aws_lb.default.0.zone_id : module.lb.zone_id
+  target_dns_name  = local.alb_use_existing ? join("", data.aws_lb.default.*.dns_name) : module.lb.dns_name
+  target_zone_id   = local.alb_use_existing ? join("", data.aws_lb.default.*.zone_id) : module.lb.zone_id
 
   context = module.this.context
+}
+
+resource "null_resource" "aliases_parent_zone_validation" {
+  lifecycle {
+    precondition {
+      condition     = local.alb_alias_enabled && var.parent_zone_id == null && var.parent_zone_id == null
+      error_message = "When using `alb_dns_aliases` you should specify either `parent_zone_id` or `parent_zone_name`."
+    }
+  }
 }
