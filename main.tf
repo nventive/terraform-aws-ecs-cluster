@@ -110,7 +110,7 @@ module "lb" {
   access_logs_enabled       = var.alb_access_logs_enabled
   access_logs_force_destroy = var.alb_access_logs_force_destroy
   access_logs_prefix        = var.alb_access_logs_prefix
-  vpc_id                    = data.aws_subnet.lb.0.vpc_id
+  vpc_id                    = join("", data.aws_subnet.lb.*.vpc_id)
 
   context = module.this.context
 }

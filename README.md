@@ -75,7 +75,7 @@ module "ecs_cluster" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.21.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.0 |
 ## Modules
 
 | Name | Source | Version |
