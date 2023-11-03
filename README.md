@@ -82,7 +82,7 @@ module "ecs_cluster" {
 |------|--------|---------|
 | <a name="module_alb_dns_alias"></a> [alb\_dns\_alias](#module\_alb\_dns\_alias) | cloudposse/route53-alias/aws | 0.13.0 |
 | <a name="module_kms_key"></a> [kms\_key](#module\_kms\_key) | cloudposse/kms-key/aws | 0.12.1 |
-| <a name="module_lb"></a> [lb](#module\_lb) | nventive/lb/aws | 1.0.1 |
+| <a name="module_lb"></a> [lb](#module\_lb) | nventive/lb/aws | 1.1.0 |
 | <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.25.0 |
 ## Resources
 
@@ -107,6 +107,7 @@ module "ecs_cluster" {
 | <a name="input_alb_arn"></a> [alb\_arn](#input\_alb\_arn) | Set if you want to use an existing Application Load Balancer. | `string` | `""` | no |
 | <a name="input_alb_dns_aliases"></a> [alb\_dns\_aliases](#input\_alb\_dns\_aliases) | List of custom domain name aliases for ALB. | `list(string)` | `[]` | no |
 | <a name="input_alb_enabled"></a> [alb\_enabled](#input\_alb\_enabled) | Set to false to prevent the module from creating an Application Load Balancer.<br>This setting defaults to false if `alb_arn` is specified. | `bool` | `true` | no |
+| <a name="input_alb_internal"></a> [alb\_internal](#input\_alb\_internal) | Set to `true` to make the ALB internal. | `bool` | `false` | no |
 | <a name="input_alb_ip_address_type"></a> [alb\_ip\_address\_type](#input\_alb\_ip\_address\_type) | Address type for ALB possible. Specify one of `ipv4`, `dualstack`. Only when `alb_enabled = true`. | `string` | `null` | no |
 | <a name="input_attributes"></a> [attributes](#input\_attributes) | ID element. Additional attributes (e.g. `workers` or `cluster`) to add to `id`,<br>in the order they appear in the list. New attributes are appended to the<br>end of the list. The elements of the list are joined by the `delimiter`<br>and treated as a single ID element. | `list(string)` | `[]` | no |
 | <a name="input_cloudwatch_log_group_retention_in_days"></a> [cloudwatch\_log\_group\_retention\_in\_days](#input\_cloudwatch\_log\_group\_retention\_in\_days) | Number of days to retain Cloudwatch logs. | `number` | `60` | no |

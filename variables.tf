@@ -31,6 +31,12 @@ variable "alb_arn" {
   description = "Set if you want to use an existing Application Load Balancer."
 }
 
+variable "alb_internal" {
+  type        = bool
+  default     = false
+  description = "Set to `true` to make the ALB internal."
+}
+
 variable "alb_ip_address_type" {
   type        = string
   default     = null
