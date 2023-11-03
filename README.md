@@ -5,7 +5,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square)](LICENSE) [![Latest Release](https://img.shields.io/github/release/nventive/terraform-aws-ecs-cluster.svg?style=flat-square)](https://github.com/nventive/terraform-aws-ecs-cluster/releases/latest)
 
-Terraform module to create an ECS Cluster.
+Terraform module to provision an ECS Cluster.
 
 ---
 
@@ -83,7 +83,7 @@ module "ecs_cluster" {
 |------|--------|---------|
 | <a name="module_alb_dns_alias"></a> [alb\_dns\_alias](#module\_alb\_dns\_alias) | cloudposse/route53-alias/aws | 0.13.0 |
 | <a name="module_kms_key"></a> [kms\_key](#module\_kms\_key) | cloudposse/kms-key/aws | 0.12.1 |
-| <a name="module_lb"></a> [lb](#module\_lb) | git@ssh.dev.azure.com:v3/nventive/Terraform-Modules/aws-lb | v0.1.0 |
+| <a name="module_lb"></a> [lb](#module\_lb) | nventive/lb/aws | 1.0.0 |
 | <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.25.0 |
 ## Resources
 

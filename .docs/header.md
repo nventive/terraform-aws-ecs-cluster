@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square)](LICENSE) [![Latest Release](https://img.shields.io/github/release/nventive/terraform-aws-ecs-cluster.svg?style=flat-square)](https://github.com/nventive/terraform-aws-ecs-cluster/releases/latest)
 
-Terraform module to create an ECS Cluster.
+Terraform module to provision an ECS Cluster.
 
 ---
 
