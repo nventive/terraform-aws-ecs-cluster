@@ -142,7 +142,7 @@ module "alb_dns_alias" {
 resource "null_resource" "aliases_parent_zone_validation" {
   lifecycle {
     precondition {
-      condition     = local.alb_alias_enabled && var.parent_zone_id == null && var.parent_zone_id == null
+      condition     = local.alb_alias_enabled && !(var.parent_zone_id == null && var.parent_zone_name == null)
       error_message = "When using `alb_dns_aliases` you should specify either `parent_zone_id` or `parent_zone_name`."
     }
   }
